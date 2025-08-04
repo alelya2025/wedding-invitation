@@ -1,0 +1,505 @@
+:root {
+    --primary: #f8e1e7;
+    --secondary: #d4a5a5;
+    --accent: #a0522d;
+    --text: #5a3e36;
+    --light: #fff9f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--light);
+    overflow-x: hidden;
+}
+
+header {
+    font-family: "Pacifico", cursive;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                url('images/bg.jpg') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+.gradient-text {
+  /* 1. Задаём градиент как фоновое изображение */
+  background-image: linear-gradient(66deg,rgba(255, 15, 223, 1) 0%, rgba(42, 198, 250, 1) 79%);
+  
+  /* 2. Обрезаем фон по контуру текста */
+  -webkit-background-clip: text; /* Для Safari */
+  background-clip: text;
+  
+  /* 3. Делаем текст прозрачным для отображения градиента */
+  color: transparent;
+  
+  /* Дополнительные стили */
+  font-size: 48px;
+  font-weight: bold;
+  display: inline-block; /* Для корректного отображения */
+}
+
+.header-content {
+    z-index: 2;
+}
+
+.header-content p {
+    font-size: 2rem;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}
+
+.countdown div {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: 10px;
+    min-width: 100px;
+}
+
+.countdown span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--secondary);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-time {
+    background: var(--secondary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+.timeline-content {
+    background: var(--primary);
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: calc(50% - 40px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: 40px;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-right: 40px;
+}
+
+.alcohol-poll {
+    background: var(--primary);
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    cursor: pointer;
+    position: relative;
+    padding-left: 35px;
+}
+
+.options input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.options label:hover input ~ .checkmark {
+    background-color: #ddd;
+}
+
+.options input:checked ~ .checkmark {
+    background-color: var(--accent);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.options input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.options .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 7px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto 0;
+    transition: transform 0.3s, background 0.3s;
+}
+
+button:hover {
+    background: #7a3b1f;
+    transform: translateY(-3px);
+}
+
+footer {
+    text-align: center;
+    padding: 3rem 0;
+    background: var(--text);
+    color: white;
+}
+
+.hearts {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: var(--secondary);
+}
+
+.hearts i {
+    margin: 0 10px;
+    animation: pulse 1.5s infinite;
+}
+
+.floral-decoration {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    height: 100px;
+    background: url('images/pattern.png') repeat-x;
+    z-index: 10;
+}
+
+/* Анимации */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .countdown {
+        flex-wrap: wrap;
+    }
+    
+    .countdown div {
+        min-width: 80px;
+        padding: 0.8rem;
+    }
+    
+    .countdown span {
+        font-size: 1.8rem;
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        flex-direction: row;
+    }
+    
+    .timeline-time {
+        margin-right: 20px;
+    }
+    
+    .timeline-content {
+        width: calc(100% - 100px);
+        margin-left: 80px !important;
+        margin-right: 0 !important;
+    }
+    
+    .options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .options {
+        grid-template-columns: 1fr;
+    }
+    
+    section {
+        padding: 3rem 1rem;
+    }
+}
+
+/* Календарь - только свадебный месяц */
+/* Календарь - только свадебный месяц */
+.calendar-section {
+    background: linear-gradient(135deg, #fffaf0, #fff5e6);
+    padding: 5rem 2rem;
+    position: relative;
+    text-align: center;
+}
+
+.wedding-date-header {
+    margin-bottom: 3rem;
+}
+
+.wedding-date-header h2 {
+    color: var(--accent);
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.wedding-month {
+    font-size: 5rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.wedding-month::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+}
+
+.wedding-year {
+    font-size: 2.5rem;
+    color: var(--text);
+    opacity: 0.8;
+    letter-spacing: 5px;
+}
+
+.calendar-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border: 1px solid rgba(160, 82, 45, 0.1);
+    position: relative;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    padding: 1.5rem 0;
+    font-weight: bold;
+    color: var(--accent);
+    background: var(--light);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 1.2rem;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    padding: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="white"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(212, 165, 165, 0.03)" stroke-width="1"/></svg>');
+    background-size: 50px 50px;
+}
+
+.calendar-days div {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 1.3rem;
+    color: var(--text);
+    transition: all 0.3s;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.calendar-days div:nth-child(7n), 
+.calendar-days div:nth-child(7n+1) {
+    background: rgba(0,0,0,0.015);
+}
+
+.calendar-days div.wedding-day {
+    background: linear-gradient(135deg, rgba(255,154,158,0.8), rgba(250,208,196,0.8)) !important;
+    color: white !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(250, 128, 114, 0.3);
+    transform: scale(1.05);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.calendar-days div.wedding-day::before {
+    content: "";
+    position: absolute;
+    top: -25%;
+    left: -25%;
+    right: -25%;
+    bottom: -25%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ff6b6b" opacity="0.4" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.28 2,8.5C2,5.42 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.09C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.42 22,8.5C22,12.28 18.6,15.36 13.45,20.03L12,21.35Z"/></svg>') center/contain no-repeat;
+    z-index: -1;
+    animation: heartPulse 2s infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.5));
+}
+
+
+/* Усиленная анимация сердца */
+@keyframes heartPulse {
+    0% { 
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+    50% { 
+        opacity: 0.7;
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.7));
+    }
+    100% { 
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+}
+
+.drinks_container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border: 1px solid rgba(160, 82, 45, 0.1);
+    position: relative;
+}
