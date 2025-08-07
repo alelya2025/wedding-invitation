@@ -1,3 +1,46 @@
+// Модалка
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('modal');
+    const openBtn = document.getElementById('openBtn');
+    const body = document.body;
+    
+    // Блокируем скролл при открытии модального окна
+    body.classList.add('no-scroll');
+    
+    function closeModal() {
+        // Запускаем анимацию скрытия
+        modal.classList.add('modal-hidden');
+        
+        // Разблокируем скролл после небольшой задержки
+        setTimeout(() => {
+            body.classList.remove('no-scroll');
+        }, 100);
+        
+        // Полностью удаляем модальное окно после завершения анимации
+        setTimeout(() => {
+            modal.remove();
+        }, 2000);
+    }
+
+    // Закрытие по кнопке
+    openBtn.addEventListener('click', closeModal);
+    
+    /* Закрытие по клику на фон (оверлей)
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });*/
+    
+    // Закрытие по клавише Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.parentNode) {
+            closeModal();
+        }
+    });
+});
+
+
 // Обратный отсчет
 const weddingDate = new Date("2025-09-15T15:00:00");
 
@@ -102,3 +145,134 @@ document.addEventListener('DOMContentLoaded', function() {
         heartMarker.style.animation = 'float 3s ease-in-out infinite';
     }, 1000);
 });
+
+// Карусель
+    const carousel = document.querySelector('.carousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    let currentIndex = 0;
+    let autoplayInterval;
+    
+    // Создание индикаторов
+    function createDots() {
+        slides.forEach(function(_, index) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) {
+                dot.classList.add('active');
+            }
+            dot.addEventListener('click', function() {
+                goToSlide(index);
+            });
+            dotsContainer.appendChild(dot);
+        });
+    }
+    
+    // Переход к слайду
+    function goToSlide(index) {
+        currentIndex = index;
+        carousel.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+        
+        // Обновление активной точки
+        var dots = document.querySelectorAll('.dot');
+        dots.forEach(function(dot, i) {
+            if (i === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+    
+    // Следующий слайд
+    function nextSlide() {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0;
+        }
+        goToSlide(currentIndex);
+    }
+    
+    // Предыдущий слайд
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = slides.length - 1;
+        }
+        goToSlide(currentIndex);
+    }
+    
+    // Автопрокрутка
+    function startAutoplay() {
+        autoplayInterval = setInterval(function() {
+            nextSlide();
+        }, 5000);
+    }
+    
+    // Остановка автопрокрутки
+    function stopAutoplay() {
+        clearInterval(autoplayInterval);
+    }
+    
+    // Инициализация карусели
+    function initCarousel() {
+        createDots();
+        
+        // Навигация
+        prevBtn.addEventListener('click', function() {
+            stopAutoplay();
+            prevSlide();
+            startAutoplay();
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            stopAutoplay();
+            nextSlide();
+            startAutoplay();
+        });
+        
+        // Пауза при наведении
+        carousel.addEventListener('mouseenter', stopAutoplay);
+        carousel.addEventListener('mouseleave', startAutoplay);
+        
+        // Адаптация при ресайзе
+        window.addEventListener('resize', function() {
+            carousel.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+        });
+        
+        // Свайпы для мобильных устройств
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        carousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        carousel.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) { // Минимальная дистанция свайпа
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+                stopAutoplay();
+                startAutoplay();
+            }
+        }
+        
+        // Запуск автопрокрутки
+        startAutoplay();
+    }
+    
+    // Инициализация
+    initCarousel();

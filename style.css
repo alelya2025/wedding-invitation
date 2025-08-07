@@ -503,3 +503,352 @@ footer {
     border: 1px solid rgba(160, 82, 45, 0.1);
     position: relative;
 }
+
+/* модалка */
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.page-content {
+    padding: 20px;
+}
+
+.content-placeholder {
+    height: 150vh; /* Для демонстрации скролла */
+    background: linear-gradient(to bottom, #7e2ec9, #57c6fa);
+    margin-top: 30px;
+    border-radius: 8px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/modal-bg.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    z-index: 1000;
+    transition: opacity 2s ease;
+}
+
+.modal-content {
+    max-width: 600px;
+    width: 85%; /* Адаптивная ширина */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    margin: 0 15px;
+    box-sizing: border-box;
+}
+
+/* Адаптивные шрифты */
+.modal-content h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.modal-content p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.6;
+}
+
+/* Кнопка */
+.open-btn {
+    margin-top: 30px;
+    padding: clamp(12px, 3vw, 15px) clamp(40px, 10vw, 50px);
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    min-width: 150px;
+}
+
+.open-btn:hover {
+    background-color: #45a049;
+}
+
+/* Анимация скрытия */
+.modal-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Медиа-запросы */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 15px;
+    }
+    .open-btn {
+        margin-top: 20px;
+        min-width: 120px;
+    }
+}
+
+@media (max-height: 500px) {
+    .modal-overlay {
+        justify-content: flex-start;
+        padding-top: 30px;
+        overflow-y: auto;
+    }
+}
+
+/* Стили для секции с каруселью */
+.section-container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.carousel-section {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    background: white;
+    padding: 30px 0;
+}
+
+.carousel-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    color: #2c3e50;
+    position: relative;
+}
+
+.carousel-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #4CAF50, #2c3e50);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    height: 500px;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.carousel-slide:hover .carousel-img {
+    transform: scale(1.03);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.carousel-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.prev-btn {
+    left: 25px;
+}
+
+.next-btn {
+    right: 25px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    padding: 10px;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    margin: 0 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dot:hover {
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background: #4CAF50;
+    transform: scale(1.2);
+}
+
+/* Адаптивные стили для карусели*/
+@media (max-width: 992px) {
+    .carousel {
+        height: 450px;
+    }
+    
+    .carousel-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content h1 {
+        font-size: 2rem;
+    }
+    
+    .modal-content p {
+        font-size: 1rem;
+    }
+    
+    .open-btn {
+        padding: 12px 40px;
+        font-size: 1rem;
+    }
+    
+    .carousel {
+        height: 380px;
+    }
+    
+    .carousel-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .carousel-caption {
+        padding: 20px 15px;
+        font-size: 1rem;
+    }
+    
+    .carousel-title {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-overlay {
+        padding: 0 15px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .carousel {
+        height: 300px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .prev-btn {
+        left: 10px;
+    }
+    
+    .next-btn {
+        right: 10px;
+    }
+    
+    .carousel-title {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+    
+    .section-container {
+        margin: 50px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel {
+        height: 250px;
+    }
+    
+    .carousel-caption {
+        padding: 15px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .carousel-dots {
+        margin-top: 15px;
+    }
+    
+    .dot {
+        width: 12px;
+        height: 12px;
+        margin: 0 6px;
+    }
+    
+    .carousel-title {
+        font-size: 1.4rem;
+    }
+}
