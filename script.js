@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // Обратный отсчет
-const weddingDate = new Date("2025-09-15T15:00:00");
+const weddingDate = new Date("2025-09-21T13:00:00");
 
 function updateCountdown() {
     const now = new Date();
@@ -84,7 +84,7 @@ document.querySelectorAll('.timeline-content').forEach((item, index) => {
 
 // Статичный календарь только для месяца свадьбы
 function generateWeddingCalendar() {
-    const weddingDay = 15;
+    const weddingDay = 21;
     const weddingMonth = 8; // Сентябрь (0-11)
     const weddingYear = 2025;
     
