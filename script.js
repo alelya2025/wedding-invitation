@@ -1,3 +1,46 @@
+// Модалка
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('modal');
+    const openBtn = document.getElementById('openBtn');
+    const body = document.body;
+    
+    // Блокируем скролл при открытии модального окна
+    body.classList.add('no-scroll');
+    
+    function closeModal() {
+        // Запускаем анимацию скрытия
+        modal.classList.add('modal-hidden');
+        
+        // Разблокируем скролл после небольшой задержки
+        setTimeout(() => {
+            body.classList.remove('no-scroll');
+        }, 100);
+        
+        // Полностью удаляем модальное окно после завершения анимации
+        setTimeout(() => {
+            modal.remove();
+        }, 2000);
+    }
+
+    // Закрытие по кнопке
+    openBtn.addEventListener('click', closeModal);
+    
+    /* Закрытие по клику на фон (оверлей)
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });*/
+    
+    // Закрытие по клавише Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.parentNode) {
+            closeModal();
+        }
+    });
+});
+
+
 // Обратный отсчет
 const weddingDate = new Date("2025-09-15T15:00:00");
 
