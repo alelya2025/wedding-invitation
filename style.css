@@ -96,7 +96,7 @@ section {
 h2 {
     text-align: center;
     margin-bottom: 3rem;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     color: var(--accent);
     display: flex;
     align-items: center;
@@ -108,6 +108,7 @@ h2 {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 10px;
 }
 
 .timeline::before {
@@ -117,43 +118,113 @@ h2 {
     bottom: 0;
     width: 2px;
     background: var(--secondary);
-    left: 50%;
-    transform: translateX(-50%);
+    left: 30px; /* Смещаем линию для мобильных */
+    transform: none; /* Убираем трансформацию */
 }
 
 .timeline-item {
     display: flex;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     position: relative;
+    flex-direction: column; /* Вертикальное расположение на мобильных */
 }
 
 .timeline-item:nth-child(even) {
-    flex-direction: row-reverse;
+    flex-direction: column; /* Всегда вертикально на мобильных */
 }
 
 .timeline-time {
     background: var(--secondary);
     color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
+    padding: 0.6rem 1rem;
+    border-radius: 25px;
     font-weight: bold;
     align-self: flex-start;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
 }
 
 .timeline-content {
     background: var(--primary);
-    padding: 1.5rem;
-    border-radius: 10px;
-    width: calc(50% - 40px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    margin-left: 40px; /* Отступ для выравнивания с линией */
+    position: relative;
 }
 
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-left: 40px;
+.timeline-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
 }
 
-.timeline-item:nth-child(even) .timeline-content {
-    margin-right: 40px;
+.timeline-content p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Адаптация для 768px и ниже */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-content {
+        width: calc(100% - 40px);
+        margin-left: 40px;
+    }
+    
+    .timeline-time {
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Адаптация для 320px */
+@media (max-width: 320px) {
+    .timeline {
+        padding: 0 5px;
+    }
+    
+    .timeline::before {
+        left: 10px;
+    }
+    
+    .timeline-item {
+        margin-bottom: 1.2rem;
+    }
+    
+    .timeline-time {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .timeline-content {
+        margin-left: 30px;
+        padding: 0.8rem;
+        width: calc(100% - 30px);
+    }
+    
+    .timeline-content h3 {
+        font-size: 1rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.8rem;
+    }
+    
+    .program h2 {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
+    
+    .program h2 i {
+        font-size: 1.3rem;
+        margin-right: 5px;
+    }
 }
 
 .alcohol-poll {
@@ -367,7 +438,6 @@ footer {
 
 .wedding-date-header h2 {
     color: var(--accent);
-    font-size: 2.8rem;
     margin-bottom: 1.5rem;
 }
 
