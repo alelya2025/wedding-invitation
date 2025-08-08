@@ -924,3 +924,144 @@ body.no-scroll {
         font-size: 1.4rem;
     }
 }
+
+/*Дресс код*/
+
+.dresscode-section {
+  padding: 36px 20px;
+  background: #fff7fb;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #222;
+}
+
+.dresscode-container {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 6px 12px;
+}
+
+/* Заголовок / текст */
+.dresscode-title {
+  font-size: 2rem;
+  color: #b30f6f; /* фуксия-акцент */
+  margin: 6px 0 8px;
+}
+
+.dresscode-text {
+  font-size: 1rem;
+  margin-bottom: 22px;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* Палитра */
+.dresscode-colors {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.color-card {
+  width: 112px;
+  height: 112px;
+  border-radius: 12px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:10px;
+  font-weight:700;
+  color:white;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transform: translateY(0);
+}
+
+.color-card.fuchsia { background: linear-gradient(135deg,#f062c0,#b30f6f); }
+.color-card.turquoise { background: linear-gradient(135deg,#2ed3c8,#23a89a); }
+
+/* Галерея миниатюр */
+.dresscode-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.dresscode-gallery img {
+  width:100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .28s ease, box-shadow .28s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.dresscode-gallery img:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+
+/* Размытие при наличии #pageWrapper: класс добавляется к этому элементу */
+.blur-bg {
+  filter: blur(6px);
+  transition: filter .28s ease;
+}
+
+/* OVERLAY fallback — если нет #pageWrapper, добавим overlay с backdrop-filter */
+.zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0,0,0,0.14);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity .25s ease;
+  opacity: 0;
+}
+
+/* Увеличенное изображение (клонированное) */
+.zoomed-image {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-width: 92vw;
+  max-height: 90vh;
+  transform: translate(-50%, -50%) scale(.92);
+  border-radius: 12px;
+  box-shadow: 0 22px 40px rgba(0,0,0,0.38);
+  transition: transform .32s cubic-bezier(.2,.9,.2,1), opacity .28s ease;
+  z-index: 1000;
+  opacity: 0;
+  cursor: zoom-out;
+  will-change: transform, opacity;
+}
+
+/* открытое состояние */
+.zoomed-image.open {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Адаптив для мобильных экранов вплоть до 320px */
+@media (max-width: 880px) {
+  .dresscode-gallery { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .color-card { width: 96px; height: 96px; }
+}
+
+@media (max-width: 520px) {
+  .dresscode-gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .dresscode-title { font-size: 1.4rem; }
+  .dresscode-text { font-size: 0.95rem; }
+  .color-card { width: 84px; height: 84px; border-radius: 10px;}
+}
+
+@media (max-width: 360px) {
+  .dresscode-container { padding-left: 8px; padding-right: 8px; }
+  .color-card { width: 76px; height: 76px; }
+  .dresscode-gallery { gap: 8px; }
+}
