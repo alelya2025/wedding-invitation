@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // Обратный отсчет
-const weddingDate = new Date("2025-09-15T15:00:00");
+const weddingDate = new Date("2025-09-21T13:00:00");
 
 function updateCountdown() {
     const now = new Date();
@@ -84,7 +84,7 @@ document.querySelectorAll('.timeline-content').forEach((item, index) => {
 
 // Статичный календарь только для месяца свадьбы
 function generateWeddingCalendar() {
-    const weddingDay = 15;
+    const weddingDay = 21;
     const weddingMonth = 8; // Сентябрь (0-11)
     const weddingYear = 2025;
     
@@ -287,3 +287,142 @@ function initCarousel() {
 
 // Инициализация
 initCarousel();
+
+
+
+
+//Дресс-код
+document.addEventListener('DOMContentLoaded', function () {
+  const pageWrapper = document.getElementById('pageWrapper'); // может быть null
+  let overlay = null;
+  let zoomedImg = null;
+  let isOpen = false;
+
+  function createOverlayIfNeeded() {
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.className = 'zoom-overlay';
+      overlay.style.opacity = '0';
+      document.body.appendChild(overlay);
+      // плавно показываем
+      requestAnimationFrame(() => { overlay.style.opacity = '1'; });
+      overlay.addEventListener('click', closeZoom);
+    }
+  }
+
+  function removeOverlay() {
+    if (overlay) {
+      overlay.style.opacity = '0';
+      // удалить после завершения анимации
+      const handler = () => {
+        if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        overlay = null;
+      };
+      overlay.addEventListener('transitionend', handler, { once: true });
+    }
+  }
+
+  function openZoom(originalImg) {
+    // Если уже открыт — сначала закрыть текущий
+    if (isOpen) closeZoom();
+
+    // Если есть pageWrapper — применим к нему blur, иначе создадим overlay с backdrop-filter
+    if (pageWrapper) {
+      pageWrapper.classList.add('blur-bg');
+    } else {
+      createOverlayIfNeeded();
+    }
+
+    // Создаём клонированное изображение (чтобы не трогать миниатюру)
+    zoomedImg = originalImg.cloneNode(false);
+    zoomedImg.className = 'zoomed-image';
+    zoomedImg.alt = originalImg.alt || '';
+    // Для корректной работы размеров
+    zoomedImg.style.maxWidth = '92vw';
+    zoomedImg.style.maxHeight = '90vh';
+    // Добавляем в DOM
+    document.body.appendChild(zoomedImg);
+
+    // Блокируем прокрутку страницы
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    // Небольшая хитрость для анимации: сначала вставляем с начальными стилями, затем добавляем класс open
+    // чтобы запустить transition
+    requestAnimationFrame(() => {
+      zoomedImg.classList.add('open');
+    });
+
+    // Закрыть по клику на само изображение
+    zoomedImg.addEventListener('click', closeZoom);
+    // Закрыть по ESC
+    document.addEventListener('keydown', escHandler);
+
+    isOpen = true;
+  }
+
+  function closeZoom() {
+    if (!isOpen) return;
+
+    // Убираем размыв/overlay
+    if (pageWrapper) {
+      pageWrapper.classList.remove('blur-bg');
+    } else {
+      removeOverlay();
+    }
+
+    // Убираем клонированное изображение плавно
+    if (zoomedImg) {
+      zoomedImg.classList.remove('open');
+      // удалить после завершения transition
+      zoomedImg.addEventListener('transitionend', () => {
+        if (zoomedImg && zoomedImg.parentNode) zoomedImg.parentNode.removeChild(zoomedImg);
+        zoomedImg = null;
+      }, { once: true });
+    }
+
+    // Восстановим прокрутку
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+
+    document.removeEventListener('keydown', escHandler);
+    isOpen = false;
+  }
+
+  function escHandler(e) {
+    if (e.key === 'Escape') closeZoom();
+  }
+
+  // Навешиваем обработчики на миниатюры
+  document.querySelectorAll('.zoomable').forEach(img => {
+    img.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openZoom(this);
+    });
+  });
+
+  // Клик везде вне зума закрывает (защитный механизм)
+  document.addEventListener('click', function (e) {
+    if (!e.target.classList.contains('zoomable') && isOpen) {
+      closeZoom();
+    }
+  });
+
+  // На телефонах иногда полезно закрывать по свайпу вниз — необязательно, можно добавить позже.
+});
+
+// Плавное появление секций при прокрутке
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target); // чтобы не анимировать снова
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll(".fade-in").forEach(section => {
+        observer.observe(section);
+    });
+});
