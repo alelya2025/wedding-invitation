@@ -410,3 +410,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // На телефонах иногда полезно закрывать по свайпу вниз — необязательно, можно добавить позже.
 });
+
+// Плавное появление секций при прокрутке
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target); // чтобы не анимировать снова
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll(".fade-in").forEach(section => {
+        observer.observe(section);
+    });
+});
