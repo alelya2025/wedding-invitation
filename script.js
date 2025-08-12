@@ -62,18 +62,6 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Обработка формы
-document.getElementById('alcoholForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const selectedOptions = Array.from(document.querySelectorAll('input[name="alcohol"]:checked'))
-                            .map(el => el.parentElement.textContent.trim());
-    
-    alert(`Спасибо, ${name}!\nВаши предпочтения: ${selectedOptions.join(', ') || 'не указаны'}`);
-    this.reset();
-});
-
 // Анимация элементов
 document.querySelectorAll('.timeline-content').forEach((item, index) => {
     setTimeout(() => {

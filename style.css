@@ -1,7 +1,7 @@
 :root {
     --primary: #f8e1e7;
     --secondary: #d4a5a5;
-    --accent: #a0522d;
+    --accent: #AA3CA1;
     --text: #5a3e36;
     --light: #fff9f9;
 }
@@ -19,11 +19,10 @@ body {
     font-style: normal;
     line-height: 1.6;
     color: var(--text);
-    background-color: var(--light);
-    background-image: url('images/body-bg.jpg'); /* путь к изображению */
-    background-size: cover; /* изображение растягивается, сохраняя пропорции */
-    background-repeat: no-repeat; /* убираем повторение */
-    overflow-x: hidden;
+    min-height: 100vh;
+    background-image: url("images/body-bg.jpg");
+    background-size: cover;         /* Масштабируется на весь экран */
+    background-repeat: no-repeat;   /* Без повторов */
 }
 
 header {
@@ -36,20 +35,44 @@ header {
     color: white;
 }
 
-.header-container {
+h2 {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: white;
+    line-height: 95%;
+    font-weight: 700;
+
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: clamp(1.5rem, 6vw, 128px);
+    color: var(--accent);
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.header-container {
+    display: flex;
+    align-items: flex-start;
 }
 
 .header-container::after {
     width: 20%;
     content: "“Место для счастья - здесь, время для счастья - сейчас!”";
     position: absolute;
-    font-size: 20px;
+    font-size: clamp(1.5rem, 2vw, 128px);
     right: 5%;   /* отступ от правого края */
-    bottom: 2%;  /* отступ от нижнего края */
+    bottom: 8%;  /* отступ от нижнего края */
     color: #fff;   /* цвет текста */
     font-style: italic; /* курсив, если нужно */
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: white;
+    line-height: 95%;
+    font-weight: 700;
 }
 
 .header-text {
@@ -63,7 +86,7 @@ header {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 100px;
+    font-size: clamp(1.5rem, 6vw, 128px);
     color: white;
     line-height: 95%;
 }
@@ -154,36 +177,9 @@ h1 {
 
 section {
     max-width: 1920px;
-    padding: 5rem 2rem;
+    padding: 2rem 2rem;
     margin: 0 auto;
     border-radius: 16px;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    font-family: "Unbounded", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
-h2::before {
-    content: attr(data-text); /* Берёт тот же текст */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.3);
-    color: rgba(0, 0, 0, 0.15); /* Цвет тени */
-    z-index: -1;
-    filter: blur(2px);
-    white-space: nowrap;
 }
 
 .timeline {
@@ -508,10 +504,24 @@ footer {
 /* Календарь - только свадебный месяц */
 /* Календарь - только свадебный месяц */
 .calendar-section {
-    background: linear-gradient(135deg, #fffaf0, #fff5e6);
     padding: 5rem 2rem;
     position: relative;
     text-align: center;
+}
+
+.calendar-section::before {
+    width: 623px;
+    height: 745px;
+    content: "";
+    position: absolute;
+    background-image: url(images/calendar.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+    z-index: 0;
+    top: 20%;
+    left: 0%;
 }
 
 .wedding-date-header {
@@ -563,6 +573,7 @@ footer {
     border: 1px solid rgba(160, 82, 45, 0.1);
     position: relative;
 }
+
 
 .calendar-weekdays {
     display: grid;
@@ -621,7 +632,7 @@ footer {
     left: -25%;
     right: -25%;
     bottom: -25%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ff6b6b" opacity="0.4" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.28 2,8.5C2,5.42 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.09C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.42 22,8.5C22,12.28 18.6,15.36 13.45,20.03L12,21.35Z"/></svg>') center/contain no-repeat;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23169FC6" opacity="0.4" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.28 2,8.5C2,5.42 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.09C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.42 22,8.5C22,12.28 18.6,15.36 13.45,20.03L12,21.35Z"/></svg>') center/contain no-repeat;
     z-index: -1;
     animation: heartPulse 2s infinite;
     filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.5));
@@ -766,14 +777,12 @@ body.no-scroll {
     overflow: hidden;
     border-radius: 16px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-    background: white;
     padding: 30px 0;
 }
 
 .carousel-title {
     text-align: center;
     margin-bottom: 40px;
-    font-size: 2.2rem;
     color: #2c3e50;
     position: relative;
 }
@@ -1000,7 +1009,6 @@ body.no-scroll {
 
 .dresscode-section {
   padding: 36px 20px;
-  background: #fff7fb;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: #222;
 }
@@ -1014,7 +1022,6 @@ body.no-scroll {
 
 /* Заголовок / текст */
 .dresscode-title {
-  font-size: 2rem;
   color: #b30f6f; /* фуксия-акцент */
   margin: 6px 0 8px;
 }
