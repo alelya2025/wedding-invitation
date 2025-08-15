@@ -2,7 +2,7 @@
     --primary: #f8e1e7;
     --secondary: #d4a5a5;
     --accent: #AA3CA1;
-    --text: #5a3e36;
+    --text: #ffffff;
     --light: #fff9f9;
 }
 
@@ -122,29 +122,18 @@ h2 {
     }
 }
 
-.gradient-text {
-  /* 1. Задаём градиент как фоновое изображение */
-  background-image: linear-gradient(66deg,rgba(255, 15, 223, 1) 0%, rgba(42, 198, 250, 1) 79%);
-  
-  /* 2. Обрезаем фон по контуру текста */
-  -webkit-background-clip: text; /* Для Safari */
-  background-clip: text;
-  
-  /* 3. Делаем текст прозрачным для отображения градиента */
-  color: transparent;
-  
-  /* Дополнительные стили */
-  font-size: 48px;
-  font-weight: bold;
-  display: inline-block; /* Для корректного отображения */
-}
-
 .header-content {
     z-index: 2;
 }
 
+
+
 .header-content p {
     font-size: 2rem;
+}
+
+.gradient-text {
+    color: #FFFFFF;
 }
 
 h1 {
@@ -182,128 +171,7 @@ section {
     border-radius: 16px;
 }
 
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 10px;
-}
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--secondary);
-    left: 30px; /* Смещаем линию для мобильных */
-    transform: none; /* Убираем трансформацию */
-}
-
-.timeline-item {
-    display: flex;
-    margin-bottom: 1.5rem;
-    position: relative;
-    flex-direction: column; /* Вертикальное расположение на мобильных */
-}
-
-.timeline-item:nth-child(even) {
-    flex-direction: column; /* Всегда вертикально на мобильных */
-}
-
-.timeline-time {
-    background: var(--secondary);
-    color: white;
-    padding: 0.6rem 1rem;
-    border-radius: 25px;
-    font-weight: bold;
-    align-self: flex-start;
-    margin-bottom: 0.8rem;
-    font-size: 0.9rem;
-    position: relative;
-    z-index: 2;
-}
-
-.timeline-content {
-    background: var(--primary);
-    padding: 1rem;
-    border-radius: 8px;
-    width: 100%;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    margin-left: 40px; /* Отступ для выравнивания с линией */
-    position: relative;
-}
-
-.timeline-content h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-}
-
-.timeline-content p {
-    font-size: 0.9rem;
-    margin: 0;
-}
-
-/* Адаптация для 768px и ниже */
-@media (max-width: 768px) {
-    .timeline::before {
-        left: 20px;
-    }
-    
-    .timeline-content {
-        width: calc(100% - 40px);
-        margin-left: 40px;
-    }
-    
-    .timeline-time {
-        padding: 0.5rem 1rem;
-    }
-}
-
-/* Адаптация для 320px */
-@media (max-width: 320px) {
-    .timeline {
-        padding: 0 5px;
-    }
-    
-    .timeline::before {
-        left: 10px;
-    }
-    
-    .timeline-item {
-        margin-bottom: 1.2rem;
-    }
-    
-    .timeline-time {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-        margin-bottom: 0.6rem;
-    }
-    
-    .timeline-content {
-        margin-left: 30px;
-        padding: 0.8rem;
-        width: calc(100% - 30px);
-    }
-    
-    .timeline-content h3 {
-        font-size: 1rem;
-    }
-    
-    .timeline-content p {
-        font-size: 0.8rem;
-    }
-    
-    .program h2 {
-        font-size: 1.5rem;
-        padding: 0 10px;
-    }
-    
-    .program h2 i {
-        font-size: 1.3rem;
-        margin-right: 5px;
-    }
-}
 
 .alcohol-poll {
     background: var(--primary);
@@ -466,10 +334,7 @@ footer {
     .countdown span {
         font-size: 1.8rem;
     }
-    
-    .timeline::before {
-        left: 30px;
-    }
+
     
     .timeline-item,
     .timeline-item:nth-child(even) {
@@ -504,14 +369,14 @@ footer {
 /* Календарь - только свадебный месяц */
 /* Календарь - только свадебный месяц */
 .calendar-section {
-    padding: 5rem 2rem;
+    padding: 11rem 2rem;
     position: relative;
     text-align: center;
 }
 
 .calendar-section::before {
-    width: 623px;
-    height: 745px;
+    width: 32%;
+    height: 69%;
     content: "";
     position: absolute;
     background-image: url(images/calendar.png);
@@ -520,7 +385,7 @@ footer {
     background-repeat: no-repeat;
     transition: transform 0.5s ease;
     z-index: 0;
-    top: 20%;
+    top: 15%;
     left: 0%;
 }
 
@@ -603,7 +468,7 @@ footer {
     justify-content: center;
     position: relative;
     font-size: 1.3rem;
-    color: var(--text);
+    color: #169FC6;
     transition: all 0.3s;
     border: 1px solid rgba(0,0,0,0.03);
 }
@@ -654,6 +519,15 @@ footer {
         opacity: 0.4;
         transform: scale(0.9);
     }
+
+}
+
+
+.drinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 540px;
 }
 
 .drinks_container {
@@ -776,15 +650,27 @@ body.no-scroll {
     position: relative;
     overflow: hidden;
     border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
     padding: 30px 0;
 }
 
 .carousel-title {
     text-align: center;
     margin-bottom: 40px;
-    color: #2c3e50;
+    color: #ffffff;
     position: relative;
+    font-size: clamp(1.5rem, 6vw, 128px);
+}
+
+.carousel-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 2vw, 128px);
+    line-height: 62px;
+    text-align: center;
+
+    color: #FFFFFF;
+
+
 }
 
 
@@ -793,6 +679,7 @@ body.no-scroll {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
+    padding-top: 3rem;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
@@ -1008,13 +895,11 @@ body.no-scroll {
 /*Дресс код*/
 
 .dresscode-section {
-  padding: 36px 20px;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: #222;
+    padding-top: 150px;
 }
 
 .dresscode-container {
-  max-width: 920px;
+  max-width: 1500px;
   margin: 0 auto;
   text-align: center;
   padding: 6px 12px;
@@ -1022,15 +907,15 @@ body.no-scroll {
 
 /* Заголовок / текст */
 .dresscode-title {
-  color: #b30f6f; /* фуксия-акцент */
+  color: #ffffff; /* фуксия-акцент */
   margin: 6px 0 8px;
+  padding: 50px 0;
 }
 
 .dresscode-text {
-  font-size: 1rem;
-  margin-bottom: 22px;
-  line-height: 1.4;
-  color: #333;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: #ffffff;
 }
 
 /* Палитра */
@@ -1039,30 +924,40 @@ body.no-scroll {
   gap: 16px;
   justify-content: center;
   margin-bottom: 24px;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .color-card {
-  width: 112px;
-  height: 112px;
-  border-radius: 12px;
   display:flex;
-  align-items:flex-end;
+  flex-direction: column;
   justify-content:center;
+  align-items: center;
+  width: 65%;
   padding:10px;
   font-weight:700;
   color:white;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  transform: translateY(0);
 }
 
-.color-card.fuchsia { background: linear-gradient(135deg,#f062c0,#b30f6f); }
-.color-card.turquoise { background: linear-gradient(135deg,#2ed3c8,#23a89a); }
+.color-card img {
+    width: 80%;
+}
+
+.color-card span {
+    font-size: 2rem;
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: white;
+    line-height: 95%;
+    color: #ffffff;
+    padding-top: 10px;
+    font-weight:400;
+}
 
 /* Галерея миниатюр */
 .dresscode-gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 12px;
   align-items: start;
 }
@@ -1154,4 +1049,117 @@ body.no-scroll {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+
+section.program {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 21rem;
+}
+
+.program h2 {
+    position: absolute;
+    right: 10%;
+    color: #093351;
+}
+
+
+.timeline {
+    display: flex;
+    position: relative;
+    align-items: baseline;
+    flex-direction: column;
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("images/line.png");
+    background-repeat: no-repeat;
+    top: 12%;
+    left: 32%;
+}
+
+.event {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.event:nth-child(even) {
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+}
+
+.event.event-2 {
+    margin-top: -55px;
+}
+
+.event.event-3 {
+    margin-top: -45px;
+}
+
+.event.event-4 {
+    margin-top: -185px;
+}
+
+.event img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.time {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.fuchsia {
+    color: #d92ebf;
+}
+
+.turquoise {
+    color: #169FC6;
+}
+
+.desc {
+    font-size: 1.5rem;
+    color: #333;
+    max-width: 215px;
+    text-align: center;
+}
+
+/* Адаптация под телефон */
+@media (max-width: 768px) {
+    .timeline {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .event {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .event:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .event img {
+        width: 100%;
+        height: auto;
+    }
+
+    .desc {
+        max-width: 100%;
+    }
 }
