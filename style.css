@@ -120,6 +120,11 @@ h2 {
     .header-text {
         padding-right: 0;
     }
+
+    .header-img {
+        max-width: 100%;
+        padding-top: 3rem;
+    }
 }
 
 .header-content {
@@ -539,6 +544,12 @@ footer {
     overflow: hidden;
     border: 1px solid rgba(160, 82, 45, 0.1);
     position: relative;
+}
+
+@media (max-width: 768px) {
+    .drinks_container {
+        display: none;
+    }
 }
 
 /* модалка */
@@ -1163,6 +1174,8 @@ section.program {
         max-width: 100%;
     }
 }
+
+
 
 .map {
     padding-top: 370px;
