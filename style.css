@@ -53,6 +53,12 @@ h2 {
     gap: 15px;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .header-container {
     display: flex;
     align-items: flex-start;
@@ -533,6 +539,20 @@ footer {
     flex-direction: column;
     align-items: center;
     padding-top: 540px;
+}
+
+.drinks::after{
+  content: "";
+  display: block;
+  position:absolute;
+  bottom: -33%;
+  right: 0%;
+  width: 454px;
+  height: 920px;
+  background-image: url("images/couple-glasses.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .drinks_container {
@@ -1175,10 +1195,8 @@ section.program {
     }
 }
 
-
-
 .map {
-    padding-top: 370px;
+    padding-top: 22%;
 }
 
 .map-сontainer {
@@ -1191,7 +1209,9 @@ section.program {
     width: 50%;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 15%;
+    padding-left: 10%;
+    padding-right: 8%;
+    font-size: clamp(15px, 2vw, 35px);
 }
 
 .map-yandex {
@@ -1199,5 +1219,78 @@ section.program {
 }
 
 .wishes {
-    padding-top: 320px;
+    padding-top: 10%;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.wishes h2 {
+    color: #093351;
+}
+
+
+.wishes h3 {
+    font-size: clamp(1.5rem, 2.5vw, 100px);
+    text-align: center;
+    color: #169FC6;
+}
+    
+
+.wishes-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wishes-details li {
+    position: relative;
+}
+
+.wishes-gorko h3,
+.wishes-gifts h3 {
+    color: transparent;
+}
+
+.wishes-gifts::before {
+    content: "Подарки";
+    position: absolute;
+    top: 14%;
+    left: 40%;
+    display: block;
+    font-size: clamp(1.5rem, 2.5vw, 100px);
+    font-weight: bold;
+    color: #BE37B3;
+}
+
+.wishes-gorko::before {
+    content: "Детали";
+    position: absolute;
+    top: 29%;
+    left: 23%;
+    display: block;
+    font-size: clamp(1.5rem, 2.5vw, 100px);
+    color: #BE37B3;
+    font-weight: bold;
+}
+
+.map-title {
+    color: #FFFFFF;
+}
+
+.map-auto span {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: clamp(15px, 2.5vw, 49px);
+    color: white;
+    line-height: 95%;
+    font-weight: 100;
+}
+
+.map-address p {
+    margin: 40px 0;
+}
+
+.map-yandex img {
+    width: 100%;
+    height: auto;
 }
