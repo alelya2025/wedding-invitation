@@ -547,20 +547,21 @@ footer div {
     flex-direction: column;
     align-items: center;
     padding-top: 540px;
+    position: relative;
 }
 
 .drinks::after{
   content: "";
-  display: block;
-  position:absolute;
-  bottom: -33%;
-  right: 0%;
-  width: 454px;
-  height: 920px;
-  background-image: url("images/couple-glasses.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    bottom: -32%;
+    right: 0%;
+    width: 23vw;
+    aspect-ratio: 449 / 916;
+    background-image: url(images/couple-glasses.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .drinks_container {
@@ -1224,6 +1225,17 @@ section.program {
 
 .map-yandex {
     width: 50%;
+    border-radius: 20px;        /* скругленные углы */
+    overflow: hidden;           /* чтобы карта не торчала */
+    border: 3px solid #ccc;     /* обводка */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25); /* тень */
+}
+
+.map-yandex iframe {
+  width: 100%;
+  height: 720px;
+  border: none; /* убираем стандартную рамку */
+  display: block;
 }
 
 .wishes {
