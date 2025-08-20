@@ -53,6 +53,12 @@ h2 {
     gap: 15px;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .header-container {
     display: flex;
     align-items: flex-start;
@@ -288,10 +294,18 @@ button:hover {
 }
 
 footer {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     padding: 3rem 0;
-    background: var(--text);
     color: white;
+    max-width: 45%;
+    margin: 0 auto;
+    margin-top: 17rem;
+}
+
+footer div {
+    margin: 0 auto;
 }
 
 .hearts {
@@ -533,6 +547,20 @@ footer {
     flex-direction: column;
     align-items: center;
     padding-top: 540px;
+}
+
+.drinks::after{
+  content: "";
+  display: block;
+  position:absolute;
+  bottom: -33%;
+  right: 0%;
+  width: 454px;
+  height: 920px;
+  background-image: url("images/couple-glasses.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .drinks_container {
@@ -1175,10 +1203,8 @@ section.program {
     }
 }
 
-
-
 .map {
-    padding-top: 370px;
+    padding-top: 22%;
 }
 
 .map-сontainer {
@@ -1191,7 +1217,9 @@ section.program {
     width: 50%;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 15%;
+    padding-left: 10%;
+    padding-right: 8%;
+    font-size: clamp(15px, 2vw, 35px);
 }
 
 .map-yandex {
@@ -1199,5 +1227,158 @@ section.program {
 }
 
 .wishes {
-    padding-top: 320px;
+    padding-top: 10%;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.wishes h2 {
+    color: #093351;
+}
+
+
+.wishes h3 {
+    font-size: clamp(1.5rem, 2.5vw, 100px);
+    text-align: center;
+    color: #169FC6;
+}
+    
+
+.wishes-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wishes-details li {
+    position: relative;
+}
+
+.wishes-gorko h3,
+.wishes-gifts h3 {
+    color: transparent;
+}
+
+.wishes-gifts::before {
+    content: "Подарки";
+    position: absolute;
+    top: 14%;
+    left: 40%;
+    display: block;
+    font-size: clamp(1.5rem, 2.5vw, 100px);
+    font-weight: bold;
+    color: #BE37B3;
+}
+
+.wishes-gorko::before {
+    content: "Детали";
+    position: absolute;
+    top: 29%;
+    left: 23%;
+    display: block;
+    font-size: clamp(1.5rem, 2.5vw, 100px);
+    color: #BE37B3;
+    font-weight: bold;
+}
+
+.map-title {
+    color: #FFFFFF;
+}
+
+.map-auto span {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: clamp(15px, 2.5vw, 49px);
+    color: white;
+    line-height: 95%;
+    font-weight: 100;
+}
+
+.map-address p {
+    margin: 40px 0;
+}
+
+.map-yandex img {
+    width: 100%;
+    height: auto;
+}
+
+.wishes-contact {
+    margin: 0 auto;
+    max-width: 50%;
+}
+
+
+.wishes-contact p {
+    font-size: 2rem;
+    text-align: center;
+    color: #093351;
+}
+
+.wishes-contact a {
+    color: #093351;
+    text-decoration-line: none;
+}
+
+
+.footer-starts {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: white;
+    line-height: 95%;
+    font-size: 3rem;
+}
+
+.footer-await {
+    font-size: 3.5rem;
+    font-weight: 500;
+}
+
+
+.map-auto p {
+    position: relative;
+}
+
+
+.map-auto-auto::before {
+    content: "";
+    position: absolute;
+    left: -17%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 100px;
+    background-image: url("images/emoji-redcar.png"); /* твоя иконка */
+    background-size: contain; /* вписываем иконку */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.map-auto-taxi::before {
+    content: "";
+    position: absolute;
+    left: -12%;
+    top: 26%;
+    transform: translateY(-50%); /* выравниваем по центру */
+    width: 50px;
+    height: 50px;
+    background-image: url("images/emoji-taxi.png"); /* твоя иконка */
+    background-size: contain; /* вписываем иконку */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.map-auto-walk::before {
+    content: "";
+    position: absolute;
+    left: -12%;
+    top: 26%;
+    transform: translateY(-50%); /* выравниваем по центру */
+    width: 50px;
+    height: 50px;
+    background-image: url("images/emoji-walk.png"); /* твоя иконка */
+    background-size: contain; /* вписываем иконку */
+    background-repeat: no-repeat;
+    background-position: center;
 }
