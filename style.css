@@ -116,23 +116,6 @@ img {
     }
 }
 
-/* Адаптация для мобильных */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column; /* фото над текстом */
-        text-align: center;
-    }
-
-    .header-text {
-        padding-right: 0;
-    }
-
-    .header-img {
-        max-width: 100%;
-        padding-top: 3rem;
-    }
-}
-
 .header-content {
     z-index: 2;
 }
@@ -388,14 +371,15 @@ footer div {
 /* Календарь - только свадебный месяц */
 /* Календарь - только свадебный месяц */
 .calendar-section {
-    padding: 11rem 2rem;
+    padding-top: 16rem;
+    padding-bottom: 4rem;
     position: relative;
     text-align: center;
 }
 
 .calendar-section::before {
-    width: 32%;
-    height: 69%;
+    width: 27%;
+    aspect-ratio: 449 / 916;
     content: "";
     position: absolute;
     background-image: url(images/calendar.png);
@@ -404,7 +388,7 @@ footer div {
     background-repeat: no-repeat;
     transition: transform 0.5s ease;
     z-index: 0;
-    top: 15%;
+    top: 27%;
     left: 0%;
 }
 
@@ -1111,7 +1095,7 @@ section.program {
     position: relative;
     align-items: baseline;
     flex-direction: column;
-    max-width: 70%;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -1129,7 +1113,6 @@ section.program {
 .event {
     display: flex;
     align-items: center;
-    gap: 20px;
 }
 
 .event:nth-child(even) {
@@ -1393,4 +1376,170 @@ section.program {
     background-size: contain; /* вписываем иконку */
     background-repeat: no-repeat;
     background-position: center;
+}
+
+@media (max-width: 1145px) {
+    .calendar-section::before {
+    width: 19%;
+    aspect-ratio: 449 / 916;
+    content: "";
+    position: absolute;
+    background-image: url(images/calendar.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+    z-index: 0;
+    top: 52%;
+    left: 1%;
+    }
+
+    .calendar-section {
+        padding-top: 22rem;
+    }
+
+    section.program {
+        margin-top: 13rem;
+    }
+
+    .drinks::after {
+        bottom: -16%;
+    }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* фото над текстом */
+        text-align: center;
+    }
+
+    .header-text {
+        padding-right: 0;
+    }
+
+    .header-img {
+        max-width: 100%;
+        padding-top: 3rem;
+    }
+
+     .header-container::after {
+        width: 50%;
+        top: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: auto;
+    }
+
+    .header-text h2 {
+        font-size: 3rem;
+        padding-top: 3rem;
+    }
+
+    .calendar-section {
+        padding-top: 18rem;
+    }
+
+    .wedding-date-header h2 {
+        font-size: 3rem;
+    }
+
+    .wedding-year {
+        color: #169FC6;
+    }
+
+    .heart-label {
+        color: #aa3ca1;
+    }
+
+    .fa-heart:before {
+        color: #169FC6;
+    }
+
+    .calendar-section::before {
+        display: none;
+    }
+
+    .polaroid-img {
+        max-width: 70%;
+        margin: 0 auto;
+    }
+
+    .carousel-title {
+        font-size: 3rem;
+        padding-top: 115px;
+    }
+
+    .carousel-text {
+        font-size: 1rem;
+        line-height: normal;
+    }
+
+    .timer {
+        position: relative;
+    }
+
+    .timer::after {
+        width: 70%;
+        aspect-ratio: 680 / 915;
+        content: none;
+        position: absolute;
+        background-image: url(images/heart-timer.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: transform 0.5s ease;
+        z-index: 0;
+        top: 145%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    section.program {
+        margin-top: 7rem;
+    }
+
+    .program h2 {
+        font-size: 3rem;
+    }
+
+    .event.event-2 {
+        margin-top: inherit;
+    }
+    .event.event-3 {
+        margin-top: inherit;
+    }
+    .event.event-4 {
+        margin-top: inherit;
+    }
+
+    .timeline {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .event:nth-child(even) {
+        margin-left: inherit; 
+    }
+
+    .timeline::before {
+        content: none;
+    }
+
+    .time {
+        font-size: 1.5rem;
+    }
+
+    .desc {
+        font-size: 1rem;
+    }
+
+    .event {
+        width: 35%;
+    }
+
+    .dresscode-title {
+        font-size: 3rem;
+    }
+
 }
