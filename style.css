@@ -12,6 +12,10 @@
     box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
     font-family: "Unbounded", sans-serif;
     font-optical-sizing: auto;
@@ -1437,7 +1441,7 @@ section.program {
     }
 
     .calendar-section {
-        padding-top: 18rem;
+        padding-top: 9rem;
     }
 
     .wedding-date-header h2 {
@@ -1540,6 +1544,10 @@ section.program {
 
     .dresscode-title {
         font-size: 3rem;
+    }
+
+    .wedding-date-header {
+        margin-bottom: 0;
     }
 
 }

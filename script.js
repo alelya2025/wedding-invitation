@@ -113,10 +113,10 @@ function generateWeddingCalendar() {
         calendarDays.appendChild(dayElement);
     }
     
-    // Добавляем пустые ячейки в конце, если нужно
-    const totalCells = 42; // 6 строк по 7 дней
-    const remainingCells = totalCells - (startOffset + daysInMonth);
-    for (let i = 0; i < remainingCells; i++) {
+    // Добавляем пустые ячейки в конце только чтобы добить до полной строки
+    const totalCells = startOffset + daysInMonth;
+    const cellsToAdd = (7 - (totalCells % 7)) % 7;
+    for (let i = 0; i < cellsToAdd; i++) {
         const emptyDay = document.createElement('div');
         emptyDay.classList.add('empty-day');
         calendarDays.appendChild(emptyDay);
@@ -130,7 +130,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Анимация сердца-маркера
     setTimeout(() => {
         const heartMarker = document.querySelector('.heart-marker i');
-        heartMarker.style.animation = 'float 3s ease-in-out infinite';
+        if (heartMarker) {
+            heartMarker.style.animation = 'float 3s ease-in-out infinite';
+        }
     }, 1000);
 });
 
