@@ -564,9 +564,7 @@ footer div {
 }
 
 @media (max-width: 768px) {
-    .drinks_container {
-        display: none;
-    }
+
 }
 
 /* модалка */
@@ -1500,7 +1498,7 @@ section.program {
     }
 
     section.program {
-        margin-top: 7rem;
+        margin-top: 14rem;
     }
 
     .program h2 {
@@ -1520,6 +1518,7 @@ section.program {
     .timeline {
         flex-direction: row;
         flex-wrap: wrap;
+        padding-top: 25%;
     }
 
     .event:nth-child(even) {
@@ -1550,4 +1549,113 @@ section.program {
         margin-bottom: 0;
     }
 
+    .event-text {
+        min-width: 0;
+        white-space: normal;
+        word-break: break-word; /* на всякий случай для длинных слов */
+    }
+
+    .dresscode-section {
+        padding-top: 25%;
+    }
+
+    .dresscode-colors {
+        flex-direction: column;
+    }
+    .color-card {
+        display: flex;
+        flex-direction: row;
+        width: 45%;
+    }
+
+    .dresscode-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .drinks_1 {
+        width: 100%;
+        height: 1000px;
+        background: linear-gradient(to bottom, #9e34bb, #c4f0fa);
+    }
+
+    .map-сontainer {
+        flex-direction: column;
+    }
+
+    .map-desc {
+        width: 100%;
+    }
+
+    .map-yandex {
+        width: 100%;
+    }
+
+    .map-auto-auto::before {
+        width: 45px;
+    }
+
+    .map-auto-taxi::before {
+        width: 25px;
+    }
+
+    .map-auto-walk::before {
+        width: 33px;
+    }
+
+    .drinks-title {
+        font-size: 3rem;
+    }
+
+    .map-title {
+        font-size: 3rem;
+    }
+
+    .wishes h2 {
+        font-size: 3rem;
+        margin-bottom: 0;
+    }
+
+    .wishes-details {
+        list-style: none;
+        flex-direction: column;
+    }
+
+    .wishes-contact {
+        max-width: 100%;
+    }
+
+    .wishes-contact p {
+        font-size: 1rem;
+    }
+
+    footer {
+        max-width: 100%;
+        margin-top: 7rem;
+    }
+
+    .footer-starts {
+        font-size: 2rem;
+    }
+
+    ul.wishes-details img {
+        width: 75%;
+        margin-left: auto;
+    }
+
+    .map-yandex iframe {
+        height: 350px;
+    }
+
+    .drinks {
+        padding-top: 130px;
+    }
+
+    .drinks-text {
+        color: #093351;
+    }
+
+    .drinks::after {
+        bottom: -11%;
+        width: 25%;
+    }
 }
