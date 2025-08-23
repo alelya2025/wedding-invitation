@@ -14,14 +14,9 @@
 </head>
 <body>
 
-    <div id="modal" class="modal-overlay">
-        <div class="modal-content">
-            <h1>Добро пожаловать!</h1>
-            <p>Это адаптивное модальное окно с красивым фоном. Нажмите кнопку ниже, чтобы увидеть основной контент страницы.</p>
-        </div>
-        <button id="openBtn" class="open-btn">Открыть</button>
-    </div>
-
+    
+  <!-- Основной контент (изначально скрыт) -->
+  <div id="mainContent" style="display: none;">
 
     <header>
         <section class="header-container">
@@ -76,28 +71,12 @@
                         <div class="carousel-caption">Свадьба, но не наша :)</div>
                     </div>
                     <div class="carousel-slide">
-                        <img src="images/corusel/7.jpg" alt="В образе" class="carousel-img">
-                        <div class="carousel-caption">В образе</div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/corusel/3.jpg" alt="Начало..." class="carousel-img">
-                        <div class="carousel-caption">Начало...</div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/corusel/2.jpg" alt="На концерте" class="carousel-img">
-                        <div class="carousel-caption">На концерте</div>
-                    </div>
-                    <div class="carousel-slide">
                         <img src="images/corusel/4.jpg" alt="Портретное фото" class="carousel-img">
                         <div class="carousel-caption">Портретное фото</div>
                     </div>
                     <div class="carousel-slide">
                         <img src="images/corusel/5.jpg" alt="Поплавки" class="carousel-img">
-                        <div class="carousel-caption">Зима и любовь</div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/corusel/6.jpg" alt="Обнимашки" class="carousel-img">
-                        <div class="carousel-caption">Обнимашки</div>
+                        <div class="carousel-caption">Поплавки</div>
                     </div>
                     <div class="carousel-slide">
                         <img src="images/corusel/10.jpg" alt="Пейзаж" class="carousel-img">
@@ -269,6 +248,86 @@
             <i class="fas fa-heart"></i>
         </div>
     </footer>
+  </div>
+
+   <!-- Первое модальное окно: шкала с сердцем -->
+  <div id="timelineModal" class="modal">
+    <div class="modal-content-2">
+      <div class="container">
+        <h2>Загрузка нашей истории</h2>
+
+        <div class="timeline-2" id="timeline-2">
+          <div class="year" data-year="2020">2020</div>
+          <div class="year" data-year="2021">2021</div>
+          <div class="year" data-year="2022">2022</div>
+          <div class="year" data-year="2023">2023</div>
+          <div class="year" data-year="2024">2024</div>
+          <div class="year" data-year="2025">2025</div>
+        </div>
+
+        <div class="heart" id="heart"></div>
+
+        <!-- Контент по годам -->
+        <div class="content active" id="2020">
+          <div class="photos">
+            <div class="photo"><img src="images/modal/1.png" alt="2020" /></div>
+            <div class="photo"><img src="images/modal/2.png" alt="2020" /></div>
+          </div>
+          <div class="text">В 2020 году, когда бушевал ковид, наши сердца нашли друг друга...</div>
+        </div>
+
+        <div class="content" id="2021">
+          <div class="photos">
+            <div class="photo"><img src="images/modal/3.png" alt="2021" /></div>
+            <div class="photo"><img src="images/modal/4.png" alt="2021" /></div>
+          </div>
+          <div class="text">В 2021 успели многое, особенно отправиться в первое совместное путешествие...</div>
+        </div>
+
+        <div class="content" id="2022">
+          <div class="photos">
+            <div class="photo"><img src="images/modal/5.png" alt="2022" /></div>
+            <div class="photo"><img src="images/modal/6.png" alt="2022" /></div>
+          </div>
+          <div class="text">2022 год был очень активным: 
+начали жить вместе, слетали в Дагестан и Нижний Новгород и много чего ещё...</div>
+        </div>
+
+        <div class="content" id="2023">
+          <div class="photos">
+            <div class="photo"><img src="images/modal/7.png" alt="2023" /></div>
+            <div class="photo"><img src="images/modal/8.png" alt="2023" /></div>
+          </div>
+          <div class="text">В 2023 году наша любовь летала на воздушном шаре, училась стоять на доске, путешествовала по Питеру....</div>
+        </div>
+
+        <div class="content" id="2024">
+          <div class="photos">
+            <div class="photo"><img src="images/modal/9.png" alt="2024" /></div>
+            <div class="photo"><img src="images/modal/10.png" alt="2024" /></div>
+          </div>
+          <div class="text">В 2024 году отметили юбилей Ильи, покорили новые высоты и прыгнули с парашютом, продолжили традицию поездок в Кондуки...</div>
+        </div>
+
+        <div class="content" id="2025">
+          <div class="photos">
+            <div class="photo"><img src="images/modal/11.png" alt="2025" /></div>
+            <div class="photo"><img src="images/modal/12.png" alt="2025" /></div>
+            <div class="photo"><img src="images/modal/13.png" alt="2025" /></div>
+          </div>
+          <div class="text">А в этом году у нас появилась машина и Данте, мы успели многое попробовать и многое продолжить... Но главное, что вот-вот мы станем семьей!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <h1>Добро пожаловать!</h1>
+            <p>Это адаптивное модальное окно с красивым фоном. Нажмите кнопку ниже, чтобы увидеть основной контент страницы.</p>
+        </div>
+        <button id="openBtn" class="open-btn">Открыть</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
