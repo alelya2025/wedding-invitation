@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heartMarker) {
             heartMarker.style.animation = 'float 3s ease-in-out infinite';
         }
-    }, 1000);
+    }, 7500);
 });
 
 // Карусель
@@ -200,7 +200,7 @@ function prevSlide() {
 function startAutoplay() {
     autoplayInterval = setInterval(function() {
         nextSlide();
-    }, 7500);
+    }, 5000);
 }
 
 // Остановка автопрокрутки
