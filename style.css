@@ -305,7 +305,7 @@ footer {
     color: white;
     max-width: 45%;
     margin: 0 auto;
-    margin-top: 17rem;
+    margin-top: 21rem;
 }
 
 footer div {
@@ -316,6 +316,7 @@ footer div {
     margin-top: 1rem;
     font-size: 1.5rem;
     color: var(--secondary);
+    margin-bottom: 85px;
 }
 
 .hearts i {
@@ -400,21 +401,6 @@ footer div {
     padding-bottom: 4rem;
     position: relative;
     text-align: center;
-}
-
-.calendar-section::before {
-    width: 27%;
-    aspect-ratio: 449 / 916;
-    content: "";
-    position: absolute;
-    background-image: url(images/calendar.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: transform 0.5s ease;
-    z-index: 0;
-    top: 27%;
-    left: 0%;
 }
 
 .wedding-date-header {
@@ -908,7 +894,7 @@ footer div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 540px;
+    padding-top: 660px;
     position: relative;
 }
 
@@ -1071,6 +1057,13 @@ body.no-scroll {
     overflow: hidden;
     border-radius: 16px;
     padding: 30px 0;
+    padding-top: 10rem;
+}
+
+.drinks p {
+    color: #093351;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
 }
 
 .carousel-title {
@@ -1589,7 +1582,7 @@ section.program {
 }
 
 .map {
-    padding-top: 22%;
+    padding-top: 20%;
 }
 
 .map-container {
@@ -1654,6 +1647,10 @@ section.program {
     color: transparent;
 }
 
+.wishes-gorko h3 {
+    display: none;
+}
+
 .wishes-gifts::before {
     content: "Подарки";
     position: absolute;
@@ -1668,7 +1665,7 @@ section.program {
 .wishes-gorko::before {
     content: "Детали";
     position: absolute;
-    top: 29%;
+    top: 8%;
     left: 23%;
     display: block;
     font-size: clamp(1.5rem, 2.5vw, 100px);
@@ -1684,7 +1681,7 @@ section.program {
     font-family: "Caveat", cursive;
     font-optical-sizing: auto;
     font-style: normal;
-    font-size: clamp(15px, 2.5vw, 49px);
+    font-size: clamp(20px, 2.5vw, 49px);
     color: white;
     line-height: 95%;
     font-weight: 100;
@@ -1727,7 +1724,7 @@ section.program {
 }
 
 .footer-await {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 500;
 }
 
@@ -1780,22 +1777,7 @@ section.program {
 }
 
 @media (max-width: 1145px) {
-    .calendar-section::before {
-    width: 19%;
-    aspect-ratio: 449 / 916;
-    content: "";
-    position: absolute;
-    background-image: url(images/calendar.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: transform 0.5s ease;
-    z-index: 0;
-    top: 52%;
-    left: 1%;
-    }
-
-    .calendar-section {
+     .calendar-section {
         padding-top: 22rem;
     }
 
@@ -1838,7 +1820,7 @@ section.program {
     }
 
     .calendar-section {
-        padding-top: 3rem;
+        padding-top: 4rem;
     }
 
     .wedding-date-header h2 {
@@ -1868,7 +1850,7 @@ section.program {
 
     .carousel-title {
         font-size: 3rem;
-        padding-top: 115px;
+        padding-top: 5px;
     }
 
     .carousel-text {
@@ -1955,7 +1937,7 @@ section.program {
     }
 
     .dresscode-section {
-        padding-top: 25%;
+        padding-top: 0;
     }
 
     .dresscode-colors {
@@ -2029,7 +2011,7 @@ section.program {
 
     footer {
         max-width: 100%;
-        margin-top: 7rem;
+        margin-top: 11rem;
     }
 
     .footer-starts {
@@ -2054,7 +2036,7 @@ section.program {
     }
 
     .drinks::after {
-        bottom: -11%;
+        bottom: -6%;
         width: 25%;
     }
 
@@ -2088,4 +2070,34 @@ section.program {
   .content {
     margin-top: 0;
   }
+}
+
+@media (min-width: 1921px) {
+    body {
+        background-size: unset;
+        background-position-x: center;
+        background-color: #794793;
+    }
+
+    .header-text span {
+        width: 75%;
+    }
+
+    .map {
+        padding-top: 4%;
+    }
+
+    .wishes-gorko::before {
+        top: 0%;
+        left: 15%;
+    }
+
+    .drinks::after {
+        width: 15vw;
+        bottom: -18%;
+    }
+
+    .section.program {
+        margin-top: 15rem;
+    }
 }
