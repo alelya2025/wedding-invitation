@@ -25,8 +25,8 @@ body {
     color: var(--text);
     min-height: 100vh;
     background-image: url("images/body-bg.jpg");
-    background-size: cover;         /* Масштабируется на весь экран */
-    background-repeat: no-repeat;   /* Без повторов */
+    background-size: cover;         
+    background-repeat: no-repeat; 
 }
 
 header {
@@ -119,6 +119,16 @@ img {
     height: auto;      /* сохраняет пропорции */
     display: block;    /* убирает лишние пробелы снизу */
     transition: transform 0.4s ease, max-width 0.4s ease;
+}
+
+.drinks_1 {
+    background: linear-gradient(to bottom, #9e34bb, #c4f0fa);
+}
+
+a.map-link {
+    display: block;
+    padding-bottom: 35px;
+    color: #FFFFFF;
 }
 
 @media (min-width: 1200px) {
@@ -497,13 +507,12 @@ footer div {
 }
 
 .calendar-days div.wedding-day {
-    background: linear-gradient(135deg, rgba(255,154,158,0.8), rgba(250,208,196,0.8)) !important;
     color: white !important;
     font-weight: bold;
     font-size: 1.5rem;
     position: relative;
     z-index: 2;
-    box-shadow: 0 5px 15px rgba(250, 128, 114, 0.3);
+    box-shadow: 0 5px 15px rgb(165 60 207 / 30%);
     transform: scale(1.05);
     border: 2px solid rgba(255, 255, 255, 0.5);
 }
@@ -515,7 +524,7 @@ footer div {
     left: -25%;
     right: -25%;
     bottom: -25%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23169FC6" opacity="0.4" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.28 2,8.5C2,5.42 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.09C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.42 22,8.5C22,12.28 18.6,15.36 13.45,20.03L12,21.35Z"/></svg>') center/contain no-repeat;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23AA3CA1" opacity="0.4" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.28 2,8.5C2,5.42 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.09C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.42 22,8.5C22,12.28 18.6,15.36 13.45,20.03L12,21.35Z"/></svg>') center/contain no-repeat;
     z-index: -1;
     animation: heartPulse 2s infinite;
     filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.5));
@@ -1523,7 +1532,7 @@ section.program {
 
 .event img {
     width: 50%;
-    height: 50%;
+    height: auto;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -1547,6 +1556,10 @@ section.program {
     color: #333;
     max-width: 215px;
     text-align: center;
+}
+
+.map-container {
+    display: flex
 }
 
 /* Адаптация под телефон */
@@ -1579,7 +1592,7 @@ section.program {
     padding-top: 22%;
 }
 
-.map-сontainer {
+.map-container {
     display: flex
 }
 
@@ -1678,7 +1691,7 @@ section.program {
 }
 
 .map-address p {
-    margin: 40px 0;
+    margin-bottom: 40px;
 }
 
 .map-yandex img {
@@ -1964,7 +1977,7 @@ section.program {
         background: linear-gradient(to bottom, #9e34bb, #c4f0fa);
     }
 
-    .map-сontainer {
+    .map-container {
         flex-direction: column;
     }
 
@@ -2064,12 +2077,15 @@ section.program {
 
   .modal-content-2 {
     justify-content: flex-start; /* контент сверху */
-    margin-top: 20px;            /* небольшой отступ */
     max-height: none;            /* убираем ограничение */
   }
 
   .container {
     max-height: none;     /* иначе режет верх */
     overflow: visible;    /* пусть скроллит вся модалка */
+  }
+
+  .content {
+    margin-top: 0;
   }
 }
