@@ -2056,4 +2056,20 @@ section.program {
   .container {
     max-height: none;
   }
+
+  .modal {
+    align-items: flex-start;   /* прижимаем к верху */
+    overflow-y: auto;          /* разрешаем скроллить всё окно */
+  }
+
+  .modal-content-2 {
+    justify-content: flex-start; /* контент сверху */
+    margin-top: 20px;            /* небольшой отступ */
+    max-height: none;            /* убираем ограничение */
+  }
+
+  .container {
+    max-height: none;     /* иначе режет верх */
+    overflow: visible;    /* пусть скроллит вся модалка */
+  }
 }
