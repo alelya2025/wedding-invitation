@@ -826,10 +826,6 @@ footer div {
     margin-bottom: 35px;
     font-size: 2em;
   }
-  
-  .modal-content {
-    width: 100%;
-  }
 
   .modal-content p {
     font-size: 1.5rem;
@@ -2048,4 +2044,8 @@ section.program {
         bottom: -11%;
         width: 25%;
     }
+
+    .modal-content {
+    width: 100%;
+  }
 }
