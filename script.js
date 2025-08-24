@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heartMarker) {
             heartMarker.style.animation = 'float 3s ease-in-out infinite';
         }
-    }, 1000);
+    }, 7500);
 });
 
 // Карусель
@@ -415,4 +415,83 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".fade-in").forEach(section => {
         observer.observe(section);
     });
+});
+
+
+// js/script.js
+document.addEventListener('DOMContentLoaded', function () {
+  const years = ['2020', '2021', '2022', '2023', '2024', '2025'];
+  const heart = document.getElementById('heart');
+  const timeline = document.getElementById('timeline');
+  const contents = document.querySelectorAll('.content');
+
+  const timelineModal = document.getElementById('timelineModal');
+  const finalModal = document.getElementById('modal');
+  const mainContent = document.getElementById('mainContent');
+
+  let currentYearIndex = 0;
+
+  // Обновление позиции сердца
+  function updateHeartPosition() {
+    const currentYearElement = document.querySelector(`.year[data-year="${years[currentYearIndex]}"]`);
+    if (!currentYearElement) return;
+
+    const yearLeft = currentYearElement.offsetLeft;
+    const yearWidth = currentYearElement.offsetWidth;
+    const heartWidth = heart.offsetWidth;
+    const heartLeft = yearLeft + yearWidth / 2 - heartWidth / 2;
+
+    heart.style.left = `${heartLeft}px`;
+  }
+
+  // Показ контента по году
+  function showContent(year) {
+    contents.forEach(content => {
+      content.classList.remove('active');
+    });
+    document.getElementById(year).classList.add('active');
+  }
+
+  // Инициализация
+  function init() {
+    updateHeartPosition();
+    showContent(years[currentYearIndex]);
+
+    setTimeout(() => {
+      heart.style.opacity = 1;
+    }, 300);
+  }
+
+  // Автоматический переход
+  function startAutoPlay() {
+    const interval = setInterval(() => {
+      currentYearIndex++;
+      updateHeartPosition();
+      showContent(years[currentYearIndex]);
+
+      // Если дошли до 2025
+      if (currentYearIndex === years.length - 1) {
+        clearInterval(interval);
+
+        // Через 5 секунд — показываем финальное окно
+        setTimeout(() => {
+          timelineModal.style.display = 'none';
+          finalModal.style.display = 'flex';
+        }, 500);
+      }
+    }, 500);
+  }
+
+  // Обработчик кнопки
+  document.getElementById('openBtn').addEventListener('click', function () {
+    finalModal.style.display = 'none';
+    mainContent.style.display = 'block';
+  });
+
+  // Обновление при изменении размера
+  window.addEventListener('resize', updateHeartPosition);
+
+  // Запуск
+  init();
+  startAutoPlay();
 });

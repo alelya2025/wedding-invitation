@@ -89,6 +89,13 @@ img {
     font-size: clamp(18px, 4vw, 1.3vw);
     text-align: center;
     padding-right: 104px;
+    
+}
+
+.header-text span {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .header-text h2 {
@@ -360,6 +367,10 @@ footer div {
     .options {
         grid-template-columns: 1fr 1fr;
     }
+
+    .header-text span {
+        width: 100%;
+    }
 }
 
 @media (max-width: 320px) {
@@ -511,6 +522,364 @@ footer div {
 }
 
 
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Полноэкранные модальные окна — на весь экран */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(58, 123, 213, 0.95), rgba(155, 89, 182, 0.95));
+  background-image: url('images/modal-back.png'); /* Путь к изображению */
+  background-position: center; /* Центрирует изображение по горизонтали и вертикали */
+  background-repeat: no-repeat; /* Запрещает повторение фона */
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Убираем ограничения с .modal-content — делаем его прозрачным и на весь экран */
+.modal-content-2 {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  text-align: center;
+  color: white;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-height: 100vh;
+}
+
+/* Контейнер внутри модального окна — теперь на почти весь экран */
+.container {
+  width: 95%;
+  max-width: 1920px;
+  max-height: 90vh;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Адаптация: на мобильных — чуть меньше отступы */
+@media (max-width: 768px) {
+  .container,
+  .modal-content-2 {
+    padding: 15px;
+    gap: 15px;
+  }
+}
+
+/* Заголовок */
+.container h1,
+.modal-content-2 h2 {
+  font-size: clamp(2em, 5vw, 3.5em);
+  margin: 10px 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.modal-content-2 p {
+  font-size: clamp(1em, 2.5vw, 1.4em);
+  line-height: 1.6;
+  margin: 15px 0;
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Шкала — на всю ширину контейнера */
+.timeline-2 {
+  position: relative;
+  width: 100%;
+  height: 25%;
+  margin: 40px auto;
+  background-image: url('images/timeline.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
+  flex-shrink: 0;
+  display: flex;          /* располагаем года в линию */
+  align-items: center;    /* выравнивание по вертикали */      
+  overflow-x: auto;       /* скролл вбок */
+  min-height: 150px;       /* не даст блоку схлопнуться */
+}
+
+/* Годы — адаптивный размер и точное позиционирование */
+.year {
+  position: absolute;
+  font-size: clamp(1em, 2.5vw, 1.5em);
+  font-weight: 600;
+  color: white;
+  user-select: none;
+  z-index: 2;
+  transform: translateX(-50%);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  visibility: hidden;
+}
+
+.year[data-year="2020"] { left: 3%; }
+.year[data-year="2021"] { left: 18%; }
+.year[data-year="2022"] { left: 33%; }
+.year[data-year="2023"] { left: 48%; }
+.year[data-year="2024"] { left: 60%; }
+.year[data-year="2025"] { left: 73%; }
+
+.year:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Сердце — крупнее и с плавной анимацией */
+.heart {
+  position: absolute;
+  top: 230px;
+  width: 95px;
+  height: 95px;
+  background-image: url('images/heart.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: left 2s ease;
+  z-index: 10;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Контент по годам — на всю ширину */
+.content {
+  display: flex;  
+  margin-top: 30px;
+  text-align: left;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+
+.content.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  position: relative;
+  pointer-events: auto;
+}
+
+.container h2 {
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.6;
+    color: var(--text);
+    font-size: 3rem;
+}
+
+/* Фото — крупнее, адаптивнее */
+.photos {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+}
+
+.photo {
+  /*height: clamp(170px, 30vw, 250px);*/
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transform: rotate(-5deg);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  position: relative;
+  background: #fff; /* белый фон, как бумага */
+  padding: 10px 10px 20px; /* снизу чуть больше, как у полароидов */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  /*width: clamp(140px, 22vw, 220px);*/
+  height: auto;
+}
+
+.photo img {
+  width: 100%;
+  /*height: 100%;*/
+  object-fit: cover;
+  height: auto;
+  display: block;
+}
+
+.photo:nth-child(1) { transform: rotate(-4deg); }
+.photo:nth-child(2) { transform: rotate(3deg); }
+.photo:nth-child(3) { transform: rotate(-6deg); }
+.photo:nth-child(4) { transform: rotate(5deg); }
+.photo:nth-child(5) { transform: rotate(-2deg); }
+
+/* Эффект при наведении */
+.photo:hover {
+  transform: rotate(0deg) scale(1.05);
+  z-index: 2;
+}
+
+/* Текст — крупнее */
+.text {
+  font-style: italic;
+  margin-top: 15px;
+  text-align: center;
+  font-size: clamp(1em, 2vw, 1.2em);
+  width: 25%;
+  font-size: 3rem;
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: white;
+  line-height: 95%;
+  color: #ffffff;
+  padding-top: 10px;
+  font-weight:400;
+  margin-left: 35px;
+}
+
+/* Кнопка в финальном окне — крупная, центрирована */
+.main-btn {
+  margin-top: 30px;
+  padding: 16px 40px;
+  font-size: clamp(1.1em, 3vw, 1.3em);
+  background: white;
+  color: #3a7bd5;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.main-btn:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Адаптация под мобильные */
+@media (max-width: 768px) {
+  .container h1,
+  .modal-content-2 h2 {
+    font-size: 2.5em;
+  }
+
+  .timeline-2 {
+    display: none;
+    height: 50px;
+    margin: 30px auto;
+  }
+
+  .heart {
+    width: 32px;
+    height: 32px;
+    top: -22px;
+  }
+
+  .modal-content-2 p {
+    font-size: 1em;
+  }
+
+  .text {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 35px;
+    font-size: 2em;
+  }
+  
+  .modal-content {
+    width: 100%;
+  }
+
+  .modal-content p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container h1,
+  .modal-content-2 h2 {
+    font-size: 2em;
+  }
+
+  .year {
+    font-size: 1em;
+  }
+
+ .photo {
+    width: 200px;
+    height: 230px
+  }
+
+  .photos {
+    flex-wrap: wrap;
+  }
+
+  .main-btn {
+    padding: 14px 30px;
+    font-size: 1.1em;
+  }
+
+  .heart {
+    display: none;
+  }
+
+  .modal {
+    align-items:flex-start;
+  }
+
+  .modal-content-2 {
+    justify-content:flex-start;
+  }
+
+  .content {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+ 
+}
+
+
 /* Усиленная анимация сердца */
 @keyframes heartPulse {
     0% { 
@@ -590,9 +959,9 @@ body.no-scroll {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('images/modal-bg.jpg') no-repeat center center;
+    background: url('images/modal-back2.png') no-repeat center center;
     background-size: cover;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -603,13 +972,26 @@ body.no-scroll {
 }
 
 .modal-content {
-    max-width: 600px;
-    width: 85%; /* Адаптивная ширина */
+    max-width: 1920px;
+    width: 50%; /* Адаптивная ширина */
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     margin: 0 15px;
     box-sizing: border-box;
+}
+
+.modal-content h1 {
+    margin-bottom: 7rem;
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+}
+
+.modal-content span {
+    font-size: 2rem;
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: white;
+    line-height: 95%;
 }
 
 /* Адаптивные шрифты */
@@ -618,22 +1000,29 @@ body.no-scroll {
 }
 
 .modal-content p {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-size: clamp(1rem, 5.5vw, 2.2rem);
     line-height: 1.6;
+    padding-bottom: 35px;
 }
 
 /* Кнопка */
 .open-btn {
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.6;
     margin-top: 30px;
     padding: clamp(12px, 3vw, 15px) clamp(40px, 10vw, 50px);
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    font-size: clamp(1rem, 3vw, 2.2rem);
+    background-color: #6B1268;
+    color: #18AFFF;
+    border-radius: 45px;
     cursor: pointer;
     transition: background-color 0.3s;
     min-width: 150px;
+    border: 1px solid black;
+    width: 14%;
 }
 
 .open-btn:hover {
@@ -715,6 +1104,7 @@ body.no-scroll {
     display: flex;
     transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
     height: 500px;
+    
 }
 
 .carousel-slide {
@@ -1439,7 +1829,7 @@ section.program {
     }
 
     .calendar-section {
-        padding-top: 9rem;
+        padding-top: 3rem;
     }
 
     .wedding-date-header h2 {
