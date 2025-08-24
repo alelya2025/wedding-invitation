@@ -477,9 +477,9 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
           timelineModal.style.display = 'none';
           finalModal.style.display = 'flex';
-        }, 500);
+        }, 8500);
       }
-    }, 500);
+    }, 7500);
   }
 
   // Обработчик кнопки
