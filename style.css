@@ -2048,4 +2048,12 @@ section.program {
     .modal-content {
     width: 100%;
   }
+
+  .modal{
+    height: 100%;
+  }
+
+  .container {
+    max-height: none;
+  }
 }
