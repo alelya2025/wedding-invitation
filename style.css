@@ -89,6 +89,13 @@ img {
     font-size: clamp(18px, 4vw, 1.3vw);
     text-align: center;
     padding-right: 104px;
+    
+}
+
+.header-text span {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .header-text h2 {
@@ -359,6 +366,10 @@ footer div {
     
     .options {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .header-text span {
+        width: 100%;
     }
 }
 
@@ -794,6 +805,7 @@ footer div {
   }
 
   .timeline-2 {
+    display: none;
     height: 50px;
     margin: 30px auto;
   }
@@ -804,14 +816,23 @@ footer div {
     top: -22px;
   }
 
-  .photo {
-    width: 140px;
-    height: 160px;
-  }
-
-  .text,
   .modal-content-2 p {
     font-size: 1em;
+  }
+
+  .text {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 35px;
+    font-size: 2em;
+  }
+  
+  .modal-content {
+    width: 100%;
+  }
+
+  .modal-content p {
+    font-size: 1.5rem;
   }
 }
 
@@ -825,15 +846,37 @@ footer div {
     font-size: 1em;
   }
 
-  .photo {
-    width: 120px;
-    height: 140px;
+ .photo {
+    width: 200px;
+    height: 230px
+  }
+
+  .photos {
+    flex-wrap: wrap;
   }
 
   .main-btn {
     padding: 14px 30px;
     font-size: 1.1em;
   }
+
+  .heart {
+    display: none;
+  }
+
+  .modal {
+    align-items:flex-start;
+  }
+
+  .modal-content-2 {
+    justify-content:flex-start;
+  }
+
+  .content {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+ 
 }
 
 
@@ -1786,7 +1829,7 @@ section.program {
     }
 
     .calendar-section {
-        padding-top: 9rem;
+        padding-top: 3rem;
     }
 
     .wedding-date-header h2 {
